@@ -1,8 +1,8 @@
 #include "sort.h"
 
 /**
- * quick_sort - function that sorts an array of integers
- *              in ascending order using the Quick sort algorithm
+ * quick_sort - function that uses the Quick sort algorithm
+ *              to sort an array of integers in ascending order.
  * @array: array
  * @size: array's size
  * Return: void
@@ -18,56 +18,56 @@ void quick_sort(int *array, size_t size)
 /**
  * partition - partition
  * @array: array
- * @lo: lower
- * @hi: higher
+ * @lw: lower
+ * @hr: higher
  * @size: array's size
- * Return: i
+ * Return: k
  */
-int partition(int *array, int lo, int hi, size_t size)
+int partition(int *array, int lw, int hr, size_t size)
 {
-	int i = lo - 1, j = lo;
-	int pivot = array[hi], aux = 0;
+	int k = lw - 1, l = lw;
+	int pivot = array[hr], aux = 0;
 
-	for (; j < hi; j++)
+	for (; l < hr; l++)
 	{
-		if (array[j] < pivot)
+		if (array[l] < pivot)
 		{
-			i++;
-			if (array[i] != array[j])
+			k++;
+			if (array[k] != array[l])
 			{
-				aux = array[i];
-				array[i] = array[j];
-				array[j] = aux;
+				aux = array[k];
+				array[k] = array[l];
+				array[l] = aux;
 				print_array(array, size);
 			}
 		}
 	}
-	if (array[i + 1] != array[hi])
+	if (array[k + 1] != array[hr])
 	{
-		aux = array[i + 1];
-		array[i + 1] = array[hi];
-		array[hi] = aux;
+		aux = array[k + 1];
+		array[k + 1] = array[hr];
+		array[hr] = aux;
 		print_array(array, size);
 	}
-	return (i + 1);
+	return (k + 1);
 }
 
 /**
  * quick_s - quick sort
  * @array: given array
- * @lo: lower
- * @hi:higher
+ * @lw: lower
+ * @hr:higher
  * @size: array's size
  * Return: void
  */
-void quick_s(int *array, int lo, int hi, size_t size)
+void quick_s(int *array, int lw, int hr, size_t size)
 {
 	int pivot;
 
-	if (lo < hi)
+	if (lw < hr)
 	{
-		pivot = partition(array, lo, hi, size);
-		quick_s(array, lo, pivot - 1, size);
-		quick_s(array, pivot + 1, hi, size);
+		pivot = partition(array, lw, hr, size);
+		quick_s(array, lw, pivot - 1, size);
+		quick_s(array, pivot + 1, hr, size);
 	}
 }
