@@ -34,26 +34,26 @@ void swap_ints(int *x, int *y)
  */
 int hoare_part(int *array, size_t size, int left, int right)
 {
-	int pivot, above, below;
+	int pvot, abve, blow;
 
-	pivot = array[right];
-	for (above = left - 1, below = right + 1; above < below;)
+	pvot = array[right];
+	for (abve = left - 1, blow = right + 1; abve < blow;)
 	{
 		do {
-			above++;
-		} while (array[above] < pivot);
+			abve++;
+		} while (array[abve] < pvot);
 		do {
-			below--;
-		} while (array[below] > pivot);
+			blow--;
+		} while (array[blow] > pvot);
 
-		if (above < below)
+		if (abve < blow)
 		{
-			swap_ints(array + above, array + below);
+			swap_ints(array + abve, array + blow);
 			print_array(array, size);
 		}
 	}
 
-	return (above);
+	return (abve);
 }
 
 /**
