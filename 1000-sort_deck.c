@@ -1,6 +1,6 @@
 #include "deck.h"
 
-int _strcmp(const char *ss1, const char *ss2);
+int _strcmp(const char *s1, const char *s2);
 char get_value(deck_node_t *card);
 void insertion_sort_deck_kind(deck_node_t **deck);
 void insertion_sort_deck_value(deck_node_t **deck);
@@ -8,23 +8,23 @@ void sort_deck(deck_node_t **deck);
 
 /**
  * _strcmp - Compares two strings.
- * @ss1: The first string to be compared.
- * @ss2: The second string to be compared.
+ * @s1: First string to be compared.
+ * @s2: Second string to be compared.
  *
- * Return: Positive byte difference if ss1 > ss2
- *         0 if ss1 == ss2
- *         Negative byte difference if ss1 < ss2
+ * Return: Positive byte difference if s1 > s2
+ *         0 if s1 == s2
+ *         Negative byte difference if s1 < s2
  */
-int _strcmp(const char *ss1, const char *ss2)
+int _strcmp(const char *s1, const char *s2)
 {
-	while (*ss1 && *ss2 && *ss1 == *ss2)
+	while (*s1 && *s2 && *s1 == *s2)
 	{
-		ss1++;
-		ss2++;
+		s1++;
+		s2++;
 	}
 
-	if (*ss1 != *ss2)
-		return (*ss1 - *ss2);
+	if (*s1 != *s2)
+		return (*s1 - *s2);
 	return (0);
 }
 
@@ -95,9 +95,9 @@ void insertion_sort_deck_kind(deck_node_t **deck)
 }
 
 /**
- * insertion_sort_deck_value - Sort a deck of cards sorted from
+ * insertion_sort_deck_value - Sorts a deck of cards sorted from
  *                             spades to diamonds from ace to king.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * @deck: Pointer to the head of a deck_node_t doubly-linked list.
  */
 void insertion_sort_deck_value(deck_node_t **deck)
 {
@@ -127,9 +127,9 @@ void insertion_sort_deck_value(deck_node_t **deck)
 }
 
 /**
- * sort_deck - Sort a deck of cards from ace to king and
+ * sort_deck - Sorts deck of cards from ace to king and
  *             from spades to diamonds.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * @deck: pointer to the head of a deck_node_t doubly-linked list.
  */
 void sort_deck(deck_node_t **deck)
 {
