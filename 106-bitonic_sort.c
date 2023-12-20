@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "sort.h"
 #include <stdlib.h>
-void swap_ints(int *a, int *b);
+void swap_ints(int *y, int *z);
 void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
 		char flow);
 void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow);
@@ -9,16 +9,16 @@ void bitonic_sort(int *array, size_t size);
 
 /**
  * swap_ints - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * @y: The first integer to swap.
+ * @z: The second integer to swap.
  */
-void swap_ints(int *a, int *b)
+void swap_ints(int *y, int *z)
 {
 	int tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	tmp = *y;
+	*y = *z
+	*z = tmp;
 }
 
 /**
