@@ -5,7 +5,7 @@ void radix_counting_sort(int *array, size_t size, int sig, int *buff);
 void radix_sort(int *array, size_t size);
 
 /**
- * get_max - Get the maximum value in an array of integers.
+ * get_max - Gets the maximum value in an array of integers.
  * @array: An array of integers.
  * @size: The size of the array.
  *
@@ -13,19 +13,19 @@ void radix_sort(int *array, size_t size);
  */
 int get_max(int *array, int size)
 {
-	int max, j;
+	int maxim, j;
 
-	for (max = array[0], j = 1; j < size; j++)
+	for (maxim = array[0], j = 1; j < size; j++)
 	{
-		if (array[j] > max)
-			max = array[j];
+		if (array[j] > maxim)
+			maxim = array[j];
 	}
 
-	return (max);
+	return (maxim);
 }
 
 /**
- * radix_counting_sort - Sort the significant digits of an array of integers
+ * radix_counting_sort - Sorts the significant digits of an array of integers
  *                       in ascending order using the counting sort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
@@ -35,26 +35,26 @@ int get_max(int *array, int size)
 void radix_counting_sort(int *array, size_t size, int sig, int *buff)
 {
 	int count[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	size_t a;
+	size_t y;
 
-	for (a = 0; a < size; a++)
-		count[(array[a] / sig) % 10] += 1;
+	for (y = 0; y < size; y++)
+		count[(array[y] / sig) % 10] += 1;
 
-	for (a = 0; a < 10; a++)
-		count[a] += count[a - 1];
+	for (y = 0; y < 10; y++)
+		count[y] += count[y - 1];
 
-	for (a = size - 1; (int)a >= 0; a--)
+	for (y = size - 1; (int)y >= 0; y--)
 	{
-		buff[count[(array[a] / sig) % 10] - 1] = array[a];
-		count[(array[a] / sig) % 10] -= 1;
+		buff[count[(array[y] / sig) % 10] - 1] = array[y];
+		count[(array[y] / sig) % 10] -= 1;
 	}
 
-	for (a = 0; a < size; a++)
-		array[a] = buff[a];
+	for (y = 0; y < size; y++)
+		array[y] = buff[y];
 }
 
 /**
- * radix_sort - Sort an array of integers in ascending
+ * radix_sort - Sorts an array of integers in ascending
  *              order using the radix sort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
@@ -64,7 +64,7 @@ void radix_counting_sort(int *array, size_t size, int sig, int *buff)
  */
 void radix_sort(int *array, size_t size)
 {
-	int max, sig, *buff;
+	int maxim, sig, *buff;
 
 	if (array == NULL || size < 2)
 		return;
@@ -73,8 +73,8 @@ void radix_sort(int *array, size_t size)
 	if (buff == NULL)
 		return;
 
-	max = get_max(array, size);
-	for (sig = 1; max / sig > 0; sig *= 10)
+	maxim = get_max(array, size);
+	for (sig = 1; maxim / sig > 0; sig *= 10)
 	{
 		radix_counting_sort(array, size, sig, buff);
 		print_array(array, size);
